@@ -1,0 +1,35 @@
+{
+  "name": "review",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "local:start": "env-cmd -f ./.env.local nodemon ./bin/www.js --update-env --watch",
+    "real:start": "env-cmd -f ./.env.local pm2 start ./bin/www.js --update-env --watch",
+    "real:restart": "env-cmd -f ./.env.local pm2 restart ./bin/www.js  --update-env --watch",
+    "real:stop": "pm2 stop www",
+    "scan:i18n": "env-cmd -f ./.env.local i18next-scanner --config translate/i18next-scanner.config.cjs  ",
+    "upload:i18n": "env-cmd -f ./.env.local npm run scan:i18n &&env-cmd -f ./.env.local node translate/upload.cjs",
+    "download:i18n": "env-cmd -f ./.env.local node translate/download.cjs"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "env-cmd": "^10.1.0",
+    "express": "~4.16.1",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "helmet": "^7.0.0",
+    "i18next": "^23.4.4",
+    "memorystore": "^1.6.7",
+    "mkdirp": "^3.0.1",
+    "morgan": "~1.9.1",
+    "sanitize-html": "^2.11.0"
+  },
+  "devDependencies": {
+    "google-auth-library": "^8.9.0",
+    "google-spreadsheet": "^4.0.2",
+    "i18next-scanner": "^4.3.0",
+    "nodemon": "^3.0.1"
+  }
+}
