@@ -20,7 +20,7 @@ const generateHTML = async (req, menuModel) => `
 </head>
 
 
-<body>
+<body class="pace-done app-init">
 <div>
     <header>
         <div id="header" class="app-header">
